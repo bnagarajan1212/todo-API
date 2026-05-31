@@ -19,6 +19,13 @@ Globals:
     Environment:
       Variables:
         DB_CONNECTION_STRING: !Ref DbConnectionString
+    VpcConfig:
+      SecurityGroupIds:
+        - sg-08ac02274ef8c92d2
+      SubnetIds:
+        - subnet-05dde8b635b7703fc
+        - subnet-055846d5b2798f727
+        - subnet-0cfa36703608b443c
 
 Resources:
   TodoApiFunction:
