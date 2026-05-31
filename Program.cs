@@ -20,6 +20,8 @@ builder.Services.AddCors(options =>
 var connectionString = Environment.GetEnvironmentVariable("DB_CONNECTION_STRING") 
     ?? builder.Configuration.GetConnectionString("DefaultConnection");
 
+Console.WriteLine($"Connection string: {connectionString}");
+
 builder.Services.AddDbContext<TodoDbContext>(options =>
     options.UseSqlServer(connectionString));
 
