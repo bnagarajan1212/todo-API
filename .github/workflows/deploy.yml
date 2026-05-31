@@ -36,13 +36,13 @@ jobs:
       # Step 5: Build with SAM
       - name: SAM Build
         run: |
-          cd todo-backend
+          cd TODOAPI
           sam build
 
       # Step 6: Deploy with SAM
       - name: SAM Deploy
         run: |
-          cd todo-backend
+          cd TODOAPI
           sam deploy --no-confirm-changeset --no-fail-on-empty-changeset \
             --stack-name todo-api \
             --region ap-south-2 \
