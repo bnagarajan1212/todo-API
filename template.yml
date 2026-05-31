@@ -1,0 +1,45 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+
+Description: Todo App - .NET 8 API on AWS Lambda
+
+Globals:
+  Function:
+    Timeout: 30
+    MemorySize: 512
+    Runtime: dotnet8
+    Architectures:
+      - x86_64
+
+Resources:
+  TodoApiFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./TodoApi/
+      Handler: TodoApi
+      Events:
+        GetTodos:
+          Type: HttpApi
+          Properties:
+            Path: /todos
+            Method: GET
+        CreateTodo:
+          Type: HttpApi
+          Properties:
+            Path: /todos
+            Method: POST
+        ToggleTodo:
+          Type: HttpApi
+          Properties:
+            Path: /todos/{id}/complete
+            Method: PATCH
+        DeleteTodo:
+          Type: HttpApi
+          Properties:
+            Path: /todos/{id}
+            Method: DELETE
+
+Outputs:
+  ApiUrl:
+    Description: "Your API URL - use this in React app"
+    Value: !Sub "https://${ServerlessHttpApi}.execute-api.${AWS::Region}.amazonaws.com"

@@ -1,0 +1,12 @@
+# .NET
+bin/
+obj/
+*.user
+.vs/
+
+# AWS SAM
+.aws-sam/
+samconfig.toml
+
+# Environment files
+appsettings.Development.json
