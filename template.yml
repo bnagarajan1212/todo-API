@@ -3,6 +3,12 @@ Transform: AWS::Serverless-2016-10-31
 
 Description: Todo App - .NET 8 API on AWS Lambda
 
+Parameters:
+  DbConnectionString:
+    Type: String
+    Description: Database connection string
+
+
 Globals:
   Function:
     Timeout: 30
@@ -10,6 +16,9 @@ Globals:
     Runtime: dotnet8
     Architectures:
       - x86_64
+    Environment:
+      Variables:
+        DB_CONNECTION_STRING: !Ref DbConnectionString
 
 Resources:
   TodoApiFunction:
