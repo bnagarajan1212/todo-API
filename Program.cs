@@ -27,6 +27,16 @@ Console.WriteLine($"Connection string: {connectionString}");
 builder.Services.AddDbContext<TodoDbContext>(options =>
     options.UseSqlServer(connectionString));
 
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(policy =>
+    {
+        policy.AllowAnyOrigin()
+              .AllowAnyMethod()
+              .AllowAnyHeader();
+    });
+});
+
 var app = builder.Build();
 
 app.UseSwagger();
