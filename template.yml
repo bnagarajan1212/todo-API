@@ -38,6 +38,11 @@ Resources:
           Properties:
             Path: /todos/{id}
             Method: DELETE
+    Metadata:
+      BuildMethod: dotnet8
+      BuildProperties:
+        ProjectReferenceList:
+          - ./TodoApi.csproj
 
 Outputs:
   ApiUrl:
