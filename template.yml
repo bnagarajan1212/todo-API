@@ -46,6 +46,11 @@ Resources:
           Properties:
             Path: /todos/{id}
             Method: DELETE
+        OptionsProxy:
+          Type: HttpApi
+          Properties:
+            Path: /{proxy+}
+            Method: OPTIONS
     Metadata:
       BuildMethod: dotnet8
       BuildProperties:
